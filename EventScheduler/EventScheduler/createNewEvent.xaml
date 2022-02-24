@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventScheduler.createNewEvent"
+             Title="Create Event">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Submit"
+                     Priority="1"
+                     Order="Primary"
+                     Clicked="ToolbarItemSubmit_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+    <StackLayout BackgroundColor="#A267AC">
+
+        <Label Text="Event Date"
+               TextColor="Black"
+               FontSize="Medium"
+               FontAttributes="Bold"/>
+
+        <DatePicker x:Name="eventDate"
+                    Format="D"
+                    HorizontalOptions="Fill"/>
+
+        <Label Text="Event Name"
+               TextColor="Black"
+               FontSize="Medium"
+               FontAttributes="Bold"/>
+
+        <Entry x:Name="eventName"
+               Keyboard="Text" 
+               Placeholder="Enter event name"
+               ReturnType="Next" 
+               ClearButtonVisibility="WhileEditing"
+               MaxLength="30"
+               FontAttributes="Bold"
+               VerticalOptions="StartAndExpand"/>
+
+    </StackLayout>
+</ContentPage>

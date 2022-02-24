@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventScheduler.MainPage"
+             Title="Event Scheduler">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Create"
+                     Priority="1"
+                     Order="Primary"
+                     Clicked="ToolbarItemCreate_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout BackgroundColor="#A267AC">
+        <SearchBar Placeholder="Search Event" TextChanged="SearchBar_TextChanged"/>
+
+            <CollectionView x:Name="myCollectionView">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                 HorizontalItemSpacing="5"
+                                 VerticalItemSpacing="5"
+                                 Span="2"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                <DataTemplate>  
+                    <SwipeView BackgroundColor="#CE7BB0">
+
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+
+                                <SwipeItem Text="Remove"
+                                            BackgroundColor="Red"
+                                            Invoked="SwipeItemRemove_Invoked"
+                                            CommandParameter="{Binding .}"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Edit"
+                                                BackgroundColor="LightBlue"
+                                                Invoked="SwipeItemEdit_Invoked"
+                                                CommandParameter="{Binding .}"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+
+                        <Frame BackgroundColor="#CE7BB0"
+                               Padding="10"
+                               CornerRadius="10">
+                                <StackLayout BackgroundColor="#CE7BB0">
+                                    <Label Text="{Binding EventName}"
+                                           HorizontalOptions="Fill"
+                                           FontSize="Medium"
+                                           HeightRequest="100"/>
+
+                                    <Label Text="{Binding EventDate}"
+                                           HorizontalOptions="Center"
+                                           FontSize="Small"/>
+                                </StackLayout>
+
+                        </Frame>
+                    </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+    </StackLayout>
+
+</ContentPage>
